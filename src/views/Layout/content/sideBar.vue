@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <div class="side_bar">
-      <v-navigation-drawer :hide-overlay="hideOverlay">
+      <v-navigation-drawer :hide-overlay="hideOverlay" permanent class="my-drawer">
         <v-list-item>
           <v-list-item-content @click="goHome()">
             <v-list-item-title class="title">叽里咕噜嘛咪嘛呀</v-list-item-title>
@@ -113,5 +113,8 @@ export default {
   margin-left: 8px;
   position: absolute;
   bottom: 20px;
+}
+.my-drawer {
+  border-right: 3px solid #f8f8f8;
 }
 </style>
