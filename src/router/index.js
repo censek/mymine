@@ -1,27 +1,56 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Hello from '../views/Hello'
+import Layout from '../views/Layout/layout'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
-const router = new VueRouter({
-  routes
+export default new Router({
+  mode: 'history',
+  routes: [{
+      path: '/',
+      name: 'Hello',
+      component: Hello,
+    },
+    {
+      path: '/note',
+      component: Layout,
+      // redirect: '/note',
+      children: [{
+        path: '/',
+        component: () => import('@/views/Note/index'),
+        name: 'myNote',
+      }]
+    },
+    {
+      path: '/pics',
+      component: Layout,
+      // redirect: '/pics',
+      children: [{
+        path: '/',
+        component: () => import('@/views/Pics/index'),
+        name: 'myPics',
+      }]
+    },
+    {
+      path: '/map',
+      component: Layout,
+      // redirect: '/map',
+      children: [{
+        path: '/',
+        component: () => import('@/views/Map/index'),
+        name: 'myMap',
+      }]
+    },
+    {
+      path: '/weather',
+      component: Layout,
+      // redirect: '/weather',
+      children: [{
+        path: '/',
+        component: () => import('@/views/Weather/index'),
+        name: 'myWeather',
+      }]
+    },
+  ]
 })
-
-export default router
