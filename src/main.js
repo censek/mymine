@@ -13,22 +13,21 @@ import Vuelidate from 'vuelidate'
 import BaiduMap from 'vue-baidu-map'
 import store from './store'
 
-const originalPush = VueRouter.prototype.push
+const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
-}
+};
 
 Vue.use(VueRouter);
-Vue.prototype.$axios = axios
+Vue.prototype.$axios = axios;
 Vue.use(Vuetify);
-Vue.use(Vuelidate)
-Vue.config.productionTip = false
+Vue.use(Vuelidate);
 Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'iybSMvqfTMHZlgVySASC6donCu3daCEF'
-})
+});
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 new Vue({
